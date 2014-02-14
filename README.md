@@ -17,22 +17,21 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 grunt.loadNpmTasks('grunt-yslow-test');
 ```
 
-## The "yslow_test" task
+## The "yslow" task
 
 ### Overview
-In your project's Gruntfile, add a section named `yslow_test` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `yslow` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  yslow_test: {
-    options: {
-      info: "grade",
-      format: "junit",
-      urls: ['http://google.com'],
-      reports: ['test/reports/yslow.xml']
-    },
-    your_target: {
-      files: []
+  yslow: {
+    homepage: {
+      options: {
+        info: "grade",
+        format: "junit",
+        urls: ['http://google.com'],
+        reports: ['test/reports/yslow.xml']
+      }
     }
   }
 })
@@ -55,13 +54,13 @@ The options mirror those available in the yslow.js plugin. Please see http://ysl
 #### Default Options
 ```js
 grunt.initConfig({
-  yslow_test: {
-    my_site: {
+  yslow: {
+    search_engines: {
       options: {
         info: "grade",
         format: "junit",
-        urls: ['http://google.com'],
-        reports: ['test/reports/yslow.xml']
+        urls: ['http://google.com', 'http://yahoo.com'],
+        reports: ['test/reports/google.xml', 'test/reports/yahoo.xml']
       }
     }
   }
@@ -70,3 +69,4 @@ grunt.initConfig({
 
 ## Release History
 0.1.0: First release
+0.2.0: Task rename

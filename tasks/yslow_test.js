@@ -1,6 +1,6 @@
 /*
  * grunt-yslow-test
- * 
+ *
  *
  * Copyright (c) 2013 Steve Workman
  * Licensed under the none license.
@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 
   var yslow = require('./lib/grunt-yslow').init(grunt).yslow;
 
-  grunt.registerMultiTask('yslow_test', 'Run YSlow tests', function() {
+  grunt.registerMultiTask('yslow', 'Run YSlow tests', function() {
     // Merge task-specific and/or target-specific options with these defaults.
     var done = this.async(),
         pages = [],
@@ -28,7 +28,7 @@ module.exports = function(grunt) {
     }
 
     // Go through each page and make the request
-    grunt.util.async.forEachSeries(pages, 
+    grunt.util.async.forEachSeries(pages,
       function(page, callback) {
         yslow(page.url, page.report, options, function (err) {
           if (err) {
